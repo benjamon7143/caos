@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static  %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/contacto.css' %}">
+{% endblock css %}
+{% block contenido %}
+
+  <main>
+    <div class="container">
+
+      <h1 class="brand"><span>Ingresar Noticia </span></h1>
+    
+      <div class="wrapper">
+    
+        <!-- COMPANY INFORMATION -->
+        <div class="company-info">
+          <h3>Ingresar datos de la Noticia</h3>
+          
+    
+          <ul>
+            <li><i class="fa fa-road"></i>Avenida Concha y Toro</li>
+            <br>
+            <li><i class="fa fa-phone"></i>(+56 2) 2020 2020</li>
+            <br>
+            <li><i class="fa fa-envelope"></i>CaosNews@gmail.cl</li>
+          </ul>
+        </div>
+        <!-- End .company-info -->
+    
+        <!-- CONTACT FORM -->
+        <div class="contact">
+          <h3></h3>
+    
+          <form id="subir-form" action="{% url 'SUBIRNOT' %}" method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <p>
+              <label>Titulo</label>
+              <input type="text" name="txtTitulo" id="txtTitulo">
+            </p>
+    
+             <p class="full">
+              <label>Descripcion</label>
+              <textarea name="txtDesc" rows="5" id="txtDesc"></textarea>
+            </p>
+
+            <p>
+              <label>Fecha</label>
+              <input type="date" name="txtFecha" id="txtFecha">
+            </p>
+
+            <p>
+                <label >Categoria</label>
+                <select name="cboCategoria" id="cboCategoria" class="form-select">
+                  <option selected>Escoge una Categoria</option>
+                  {% for item in Categoria %}
+                    <option value="{{item.IDCate}}">{{item.NombreCate}}</option>
+                  {% endfor %}
+                </select>
+            </p>
+
+            <p>
+              <label>Periodista</label>
+                <select name="cboPeriodista" id="cboPeriodista" class="form-select">
+                  <option selected>seleccionar Periodistas</option>
+                  {% for item in Periodistas  %}
+                   <option value="{{item.IDPer}}">{{item.NombrePer}}</option>
+                  {% endfor %}
+                </select>
+            </p>
+            
+            <p>
+              <label>Adjuntar Archivo</label>
+              <input type="file" name="txtIMG" id="txtIMG">
+            </p>
+
+            <p class="full">
+              <button type="submit" onclick="validarnoticia()">Enviar</button>
+            </p>
+    
+          </form>
+          <!-- End #contact-form -->
+        </div>
+        <!-- End .contact -->
+    
+      </div>
+      <!-- End .wrapper -->
+    </div>
+    <!-- End .container -->
+  </main>
+
+{% endblock contenido %}
+  {% block js %}
+    <script src="{% static 'js/subirNoticia.js' %}"></script>
+  {% endblock js %}

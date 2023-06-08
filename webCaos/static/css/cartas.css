@@ -1,0 +1,90 @@
+.contenedor{
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
+
+/* ESTILO DE CARGA */
+.card-image {
+	display: inline-block;
+	min-height: 20rem; 
+	background: #fff center center no-repeat;
+	background-size: cover;
+}
+
+.card-image > img {
+	display: inline-block;
+	width: 100%;
+    height: 100%;
+	opacity: 0; 
+}
+
+.card-image.is-loaded {
+	filter: none; 
+	transition: filter 1s;
+}
+.card-image.is-loaded > img {
+    opacity: 1;
+    }
+/* ESTILO DE DISEÑO*/
+
+
+.card-list {
+	display:flex ;
+	margin: 1rem auto;
+	padding: 70px;
+	font-size: 0;
+	text-align: center;
+	list-style: none;
+	margin-top: 0px;
+}
+
+.card {
+	display: inline-block;
+	width: 90%;
+	max-width: 20rem;
+	margin: 1rem;
+	font-size: 1rem;
+	text-decoration: none;
+	overflow: hidden;
+	box-shadow: 0 0 3rem -1rem rgba(0,0,0,0.5);
+	transition: transform 0.1s ease-in-out, box-shadow 0.1s;
+}
+
+.card:hover {
+	transform: translateY(-0.5rem) scale(1.0125);
+	box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
+}
+
+.card-description {
+	display: block;
+	padding: 1em 0.5em;
+	color: #515151;
+	text-decoration: none;
+	font-family: 'Times New Roman', Times, serif;
+}
+
+.card-description > h2 {
+	margin: 0 0 0.5em;
+	font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-description > p {
+	margin: 0;
+	font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* ----------- */ 
+
+.titulo
+{
+	text-align: center;
+	margin-top: 10px;
+}
+
+
+
+/* EFECTOS DE LA OTRA CARTA */

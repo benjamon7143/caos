@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static  %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/bienvenido.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cartas' %}">
+{% endblock css %}
+{% block contenido %}
+    <section id="bienvenido">
+        <h2>Galeria de noticias</h2>
+        <p>Busca de acuerdo a lo que necesites por categoria o palabra</p>            
+    </section>
+
+    <section id="blog">
+            
+            <div id="cartas" class="contenedor">
+                {% for item in Noticias %}
+                    <ul class="card-list">
+                        <li class="card">
+                            <a class="card-image" href="" target="blank" style="background-image: url({{item.Foto.url}});" data-image-full="{{item.Foto.url}}">
+                                <img src="{{item.Foto.url}}" alt="">
+                            </a>
+                            <a class="card-description" href="" target="blank">
+                                <h2>{{item.Titulo}}</h2>
+                            </a>
+                        </li>
+                    </ul>
+                 {% empty %}
+                    <p>No se encontraron resultados</p>   
+                {% endfor %}
+            </div>
+    </section>
+        
+{% endblock contenido %}
+ {% block js %}
+ 
+ {% endblock js %}

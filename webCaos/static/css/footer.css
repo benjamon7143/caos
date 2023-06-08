@@ -1,0 +1,12 @@
+.footer {
+    background-color: #4481eb;
+    color: #ffffffee;
+    font-size: 14px;
+    bottom: 0;
+    position: -ms-page;
+    /* left: 0; */
+    right: 0;
+    text-align: center;
+    z-index: 999;   
+}
+

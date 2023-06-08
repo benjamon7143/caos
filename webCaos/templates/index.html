@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Caos News</title>
+   <!-- CSS -->
+   <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+   <link rel="stylesheet" href="{% static 'css/carusel.css' %}">
+   <link rel="stylesheet" href="{% static 'css/cartas.css' %}">
+   <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
+<body>
+   
+   <!-- ENCABEZADO DE LA PAGINA -->
+   <header>
+      <!-- LOGO -->
+      <div class="logo">
+         <img  class="logo-img" src="{% static 'img/logo.png' %}" alt="">
+         <a href="{% url 'IND' %}" class="header-logo">Caos News</a>
+
+      </div>
+      <!-- MENU -->
+      <nav class="nav" id="nav-menu">
+         <ion-icon name="close-outline" class="header-close" id="close-menu"></ion-icon>
+         <!-- LINKS -->
+         <ul class="nav-list">
+            <li class="nav-item"><a href="{% url 'IND' %}" class="nav-link">Inicio</a></li>
+            <li class="nav-item"><a href="{% url 'GALE' %}" class="nav-link">Galeria</a></li>
+            <li class="nav-item"><a href="{% url 'CONTAC' %}" class="nav-link">Contactanos</a></li>
+            <li class="nav-item"><a href="{% url 'NOSTRO' %}" class="nav-link">Sobre Nosotros</a></li>
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a href="{% url 'ADMINNOT' %}" class="nav-link">Administrar Noticias</a></li>
+                <li class="nav-item"><a href="{% url 'CERRAR' %}" class="nav-link">Cerrar Sesion</a></li>
+                <li class="nav-item"><a href="" class="nav-link">Bienvenido: {{user.username}}</a></li>
+            {% else %}
+
+                 <!-- BOTON LOGIN  -->
+                <div id="user">
+                    <button class="loginbtn"><a href="{% url 'LOGIN' %}"><i class="fa fa-regular fa-user" id="user-icon"></i></a></button>
+                </div>
+
+            {% endif %} 
+
+            <!-- BARRA DE BUSQUEDA -->
+                <div id="search">
+                <i class="fas fa-search" id="search-icon"></i>
+                <form method="GET" action="{% url 'BUSCAR' %}">
+                    {% csrf_token %}
+                    <input type="text" id="search-input" name="txtbuscar" autocomplete="off">
+                </form>
+                </div>
+
+
+         </ul>
+      </nav>
+      <!-- ICONO MENU RESPONSIVO -->
+      <ion-icon name="menu-outline" class="header-toggle" id="toggle-menu"></ion-icon>
+   </header>
+
+
+  <!-- CARRUSEL -->
+   <div id="carusel" class="contenedor">
+
+      <div class="carrusel">
+         <div class="carousel">
+            <div class="carousel-inner">
+                <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
+                <div class="carousel-item">
+                    <img src="{% static 'img/coronavirus.jpg' %}">
+                    <div class="carousel-caption">
+                        <h3>Se acabo la Pandemia del coronavirus pero se alerta por nueva amenaza</h3>
+                        <p>La OMS declara el fin de la Pandemia del coronavirus, pero aparece una nueva alerta</p>
+                        <a href="{% url 'NOTPANDE' %}">Leer mas...</a>
+                    </div>
+                </div>
+                <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+                <div class="carousel-item">
+                    <img src="{% static 'img/ecologica.png' %}">
+                    <div class="carousel-caption">
+                        <h3> Y Quién Paga la Deuda Ecológica de Chile? </h3>
+                        <p>Nuestra deuda con el medio ambiente es una deuda que no prescribe y donde los avales somos todos.</p>
+                        <a href="">Leer mas...</a>
+                    </div>
+                </div>
+                <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+                <div class="carousel-item">
+                    <img src="{% static 'img/bonos-subsidios-pendientes.png' %}">
+                    <div class="carousel-caption">
+                        <h3> Bonos y subsidios por cobrar: revisa con tu RUT si tienes dinero pendiente </h3>
+                        <p>Consulta, en pocos pasos, qué beneficios puedes cobrar en la plataforma del IPS en línea.</p>
+                        <a href="">Leer mas...</a>
+                    </div>
+                </div>
+                <label for="carousel-3" class="carousel-control prev control-1">‹</label>
+                <label for="carousel-2" class="carousel-control next control-1">›</label>
+                <label for="carousel-1" class="carousel-control prev control-2">‹</label>
+                <label for="carousel-3" class="carousel-control next control-2">›</label>
+                <label for="carousel-2" class="carousel-control prev control-3">‹</label>
+                <label for="carousel-1" class="carousel-control next control-3">›</label>
+                <ol class="carousel-indicators">
+                    <li>
+                        <label for="carousel-1" class="carousel-bullet">•</label>
+                    </li>
+                    <li>
+                        <label for="carousel-2" class="carousel-bullet">•</label>
+                    </li>
+                    <li>
+                        <label for="carousel-3" class="carousel-bullet">•</label>
+                    </li>
+                </ol>
+            </div>
+    </div>
+      </div>
+   </div>
+  <!-- FIN  CARRUSEL -->
+
+
+
+
+    <!-- INICIO CARTAS -->  
+   <div id="cartas" class="contenedor">
+    
+          <h1 class="titulo">TENDENCIAS</h1>  
+          
+          <ul class="card-list">
+          
+          <li class="card">
+              <a class="card-image" href="" target="blank" style="background-image: url(static/img/toha.jpg);" data-image-full="static/img/toha.jpg">
+                  <img src="{% static 'img\toha.jpg' %}" alt="">
+              </a>
+              <a class="card-description" href="" target="blank">
+                  <h2>"No es quitarle el apoyo a las policías, es otorgárselo"</h2>
+                  <p>"Esta ministra nunca le ha faltado, ni ahora ni antes, ni siquiera en dictadura, el respeto a las FF.AA. ni a Carabineros", dijo Tohá.</p>
+              </a>
+          </li>
+
+          <li class="card">
+              <a class="card-image" href="" target="_blank" style="background-image: url(static/img/atropellomuerte.jpg);" data-image-full="static/img/atropellomuerte.jpg">
+                  <img src="{% static 'img/atropellomuerte.jpg' %}" alt="" />
+              </a>
+              <a class="card-description" href="" target="_blank">
+                  <h2>Padre de joven abatido por carabinero en San Antonio acusó "fuerza desmedida"</h2>
+                  <p>Francisco Toro anunció acciones legales: "No tenía papeles al día de su auto, así que a lo mejor eso lo asustó".</p>
+              </a>
+          </li>
+          
+          <li class="card">
+              <a class="card-image" href="{% url 'NOTUDECHI'%}" target="_blank" style="background-image: url(static/img/Udechile.jpg);" data-image-full="static/img/Udechile.jpg">
+                  <img src="{% static 'img/Udechile.jpg' %}" alt="">
+              </a>
+              <a class="card-description" href="{% url 'NOTUDECHI'%}" target="_blank">
+                  <h2>El partido que Universidad de Chile disputará solo con mujeres y niños en las gradas</h2>
+                  <p>El Tribunal de Disciplina de la ANFP sorprendió con el castigo para los azules por los incidentes en el pasado clásico ante la UC.</p>
+              </a>
+          </li>
+          
+          <li class="card">
+              <a class="card-image" href="" target="_blank" style="background-image: url(static/img/cabopalma.jpg);" data-image-full="static/img/cabopalma.jpg">
+                  <img src="{% static 'img/cabopalma.jpg' %}" alt="">
+              </a>
+              <a class="card-description" href="" target="_blank">
+                  <h2>Amplían detención de Luis Lugo y Ovimarlixión Garcés</h2>
+                  <p>Ambos ciudadanos venezolanos fueron detenidos por su presunta participación en el hecho.</p>
+              </a>
+          </li>
+          
+          <li class="card">
+              <a class="card-image" href="" target="_blank" style="background-image: url(static/img/cadem.jpg);" data-image-full="static/img/cadem.jpg">
+                  <img src="{% static 'img/cadem.jpg' %}">
+              </a>
+              <a class="card-description" href="" target="_blank">
+                  <h2>Cadem: desaprobación a Presidente Boric sube a 65%</h2>
+                  <p>En esta versión, se incluyó una pregunta que tiene que ver con la preferencia presidencial de los encuestados.</p>
+              </a>
+          </li>
+          </ul>
+      
+          <h1 class="titulo">ACTUALIDAD</h1>
+
+          <ul class="card-list">
+          
+          <li class="card">
+              <a class="card-image" href="" target="_blank" style="background-image: url(static/img/maciel.jpg);" data-image-full="static/img/maciel.jpg">
+                  <img src="{% static 'img/maciel.jpg' %}" alt="" />
+              </a>
+              <a class="card-description" href="" target="_blank">
+                  <h2>Felipe Rojas por crimen de Fernanda Maciel: "Sé que no existe forma de reparar el daño causado"</h2>
+                  <p>El sujeto está acusado como autor de los delitos de violación con homicidio, aborto, inhumación ilegal y hurto.</p>
+              </a>
+          </li>
+          
+          <li class="card">
+              <a class="card-image" href="" target="_blank" style="background-image: url(static/img/nain.jpg);" data-image-full="static/img/nain.jpg">
+                  <img src="{% static 'img/nain.jpg' %}" alt="" />
+              </a>
+              <a class="card-description" href="" target="_blank">
+                  <h2>Publicada este lunes en Diario Oficial: qué dice la Ley Nain-Retamal</h2>
+                  <p>La norma entrega mayores atribuciones para Carabineros con el objetivo de proteger a la policía uniformada.</p>
+              </a>
+          </li>
+          
+          <li class="card">
+              <a class="card-image" href="" target="_blank" style="background-image: url(static/img/proximosrivales.jpg);" data-image-full="static/img/proximosrivales.jpg">
+                  <img src="{% static 'img/proximosrivales.jpg' %}" alt="The Beautiful Game" />
+              </a>
+              <a class="card-description" href="" target="_blank">
+                  <h2>Los rivales que esperan a Colo Colo, la U y la UC en Copa Chile</h2>
+                  <p>Los tres llamados "grandes" del fútbol chileno consiguieron la clasificación a cuartos de final del certamen.</p>
+              </a>
+          </li>
+          
+          <li class="card">
+              <a class="card-image" href="" target="_blank" style="background-image: url(static/img/sernac.jpg);" data-image-full="static/img/sernac.jpg">
+                  <img src="{% static 'img/sernac.jpg' %}" alt="" />
+              </a>
+              <a class="card-description" href="" target="_blank">
+                  <h2>Sernac alerta sobre modelos de Suzuki</h2>
+                  <p>Se trata de los modelos comercializados durante los años 2016 y 2022, siendo en total 2.036 vehículos afectados.</p>
+              </a>
+          </li>
+          
+          <li class="card">
+              <a class="card-image" href="" target="_blank" style="background-image: url(static/img/vallejos.jpg);" data-image-full="static/img/vallejos.jpg">
+                  <img src="{% static 'img/vallejos.jpg' %}" alt="" />
+              </a>
+              <a class="card-description" href="" target="_blank">
+                  <h2>Vocera aborda denuncias de acoso y maltrato en La Moneda</h2>
+                  <p>"Lo que corresponde es activar los protocolos", aseguró Camila Vallejo.</p>
+              </a>
+          </li>
+      
+          </ul>
+   </div>
+   <!-- FIN CARTAS -->  
+
+
+   <!-- PIE DE PÁGINA -->
+   <footer class="footer">
+      <div class="footer-main">
+         <div class="auxi"> 
+
+         </div>
+      </div>
+      <div class="footer-sec">
+         <div class="auxi">
+            <ul>
+               <li>Avenida Concha y Toro, Av San Carlos 1340, Puente Alto, Santiago.</li>
+               <li>Fono: (+56 2) 2020 2020</li>
+               <li>Mail: CaosNews@gmail.cl</li>
+            </ul>
+            <p class="copyright">Caos News · Copyright 2023 · Todos los derechos reservados</p>
+         </div>
+      </div>
+   </footer>
+
+   <!-- SCRIPT -->
+   <script src="{% static 'js/main.js' %}"></script>
+   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+   
+
+</body>
+</html>

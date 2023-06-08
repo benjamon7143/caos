@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Caos News</title>
+   <!-- CSS -->
+   <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+   <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+   {% block css %}
+   
+   {% endblock css %}
+</head>
+<body>
+   
+   <!-- ENCABEZADO DE LA PAGINA -->
+   <header>
+      <!-- LOGO -->
+      <div class="logo">
+         <img  class="logo-img" src="{% static 'img/logo.png' %}" alt="">
+         <a href="{% url 'IND' %}" class="header-logo">Caos News</a>
+
+      </div>
+      <!-- MENU -->
+      <nav class="nav" id="nav-menu">
+         <ion-icon name="close-outline" class="header-close" id="close-menu"></ion-icon>
+         <!-- LINKS -->
+         <ul class="nav-list">
+            <li class="nav-item"><a href="{% url 'IND' %}" class="nav-link">Inicio</a></li>
+            <li class="nav-item"><a href="{% url 'GALE' %}" class="nav-link">Galeria</a></li>
+            <li class="nav-item"><a href="{% url 'CONTAC' %}" class="nav-link">Contactanos</a></li>
+            <li class="nav-item"><a href="{% url 'NOSTRO' %}" class="nav-link">Sobre Nosotros</a></li>
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a href="{% url 'ADMINNOT' %}" class="nav-link">Administrar Noticias</a></li>
+                <li class="nav-item"><a href="{% url 'CERRAR' %}" class="nav-link">Cerrar Sesion</a></li>
+                <li class="nav-item"><a href="" class="nav-link">Bienvenido: {{user.username}}</a></li>
+            {% else %}
+                 <!-- BOTON LOGIN  -->
+                <div id="user">
+                    <button class="loginbtn"><a href="{% url 'LOGIN' %}"><i class="fa fa-regular fa-user" id="user-icon"></i></a></button>
+                </div>
+
+            {% endif %} 
+
+
+            <!-- BARRA DE BUSQUEDA -->
+               <div id="search">
+               <i class="fas fa-search" id="search-icon"></i>
+               <form method="GET" action="{% url 'BUSCAR' %}">
+                  {% csrf_token %}
+                  <input type="text" id="search-input" name="txtbuscar" autocomplete="off">
+               </form>
+               </div>
+
+
+         </ul>
+      </nav>
+      <!-- ICONO MENU RESPONSIVO -->
+      <ion-icon name="menu-outline" class="header-toggle" id="toggle-menu"></ion-icon>
+   </header>
+
+   {% block contenido %}
+   
+   {% endblock contenido %}
+
+
+   <!-- PIE DE PÁGINA -->
+   <footer class="footer">
+      <div class="footer-main">
+         <div class="auxi"> 
+
+         </div>
+      </div>
+      <div class="footer-sec">
+         <div class="auxi">
+            <ul>
+               <li>Avenida Concha y Toro, Av San Carlos 1340, Puente Alto, Santiago.</li>
+               <li>Fono: (+56 2) 2020 2020</li>
+               <li>Mail: CaosNews@gmail.cl</li>
+            </ul>
+            <p class="copyright">Caos News · Copyright 2023 · Todos los derechos reservados</p>
+         </div>
+      </div>
+   </footer>
+
+    {% block js %}
+    
+    {% endblock js %}
+   <!-- SCRIPT -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+
+   
+
+</body>
+</html>

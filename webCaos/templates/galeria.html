@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static  %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/bienvenido.css' %}">
+    <link rel="stylesheet" href="{% static 'css/galeria.css' %}">
+{% endblock css %}
+{% block contenido %}
+    <section id="bienvenido">
+        <h2>Galeria de noticias</h2>
+        <p>Busca de acuerdo a lo que necesites por categoria o palabra</p>            
+    </section>
+
+    <section id="blog">
+
+            <form action="{% url 'BUSCARPALA' %}" method="post">
+                {% csrf_token %}
+                Buscar por palabra clave:
+                <input type="text" name="txtDesc" id="txtDesc">
+                <input type="submit" value="Buscar">
+            </form>
+
+             <!-- <form action="{% url 'BUSCARCATE' %}" method="post">
+                {% csrf_token %}
+                Buscar por categoria:
+                <input type="text" name="txtCategoria" id="txtCategoria">
+                <input type="submit" value="Buscar">
+            </form>  -->
+            
+            <div class="contenedor">
+                {% for item in Noticias %}
+                <article>
+                    <img src="{{item.Foto.url}}" alt="">
+                    <h3>{{item.Titulo}}</h3>
+                </article>
+                {% endfor %}
+            </div>
+    </section>
+        
+{% endblock contenido %}
+ {% block js %}
+ 
+ {% endblock js %}

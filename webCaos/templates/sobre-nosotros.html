@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static  %}
+{% block css %}
+   <link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock css %}
+{% block contenido %}
+
+      <section class="about" id="about">
+    <div class="container">
+        <div class="heading text-center">
+            <h2>Sobre
+                <span>Nosotros</span></h2>
+            <p> Somos un grupo de estudiantes de periodismo y de comunicación audio visual 
+                <br>
+                tratando de llevar las noticias nacionales e internacionales a un mejor nivel.
+            </p>
+        </div>
+
+        <div class="col-lg-6">
+            <h3>Propósito </h3>
+            <p>En Caos News tratamos de abordar las noticias con una mirada fresca y joven, 
+               de los cual cada persona que se une a Caos News viene aporta con su experiencia y profesionalismo  
+               para asi poder entregar de la mejor forma posible ante nuestra audiencia.</p>           
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="https://i.ibb.co/qpz1hvM/About-us.jpg" alt="about" class="img-fluid" width="50%">
+            </div>
+        </div>
+    </div>
+   </section>
+
+{% endblock contenido %}
+   {% block js %}
+   
+   {% endblock js %}
+
+
+
+
+
+
+

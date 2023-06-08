@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static  %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/noticias.css' %}">
+{% endblock css %}
+{% block contenido %}
+
+     <div class="col-4">
+        <h1 class="tit">El partido que Universidad de Chile disputará solo con mujeres y niños en las gradas</h1>
+        <p class="baj">El Tribunal de Disciplina de la ANFP sorprendió con el castigo para los azules por los incidentes en el pasado clásico ante la UC.</p>
+        <div class="cont-creditos"> 
+            <p class="autor">Caos News</p>
+        </div>
+        <div class="imagen">
+            <img class="imagen-noticia" src="{% static 'img/UdeChile.jpg' %}" alt="">
+        </div>
+        <div class="toolbar">
+            <p class="fecha">Viernes 12 de mayo de 2023</p>
+        </div>
+
+        <section class="contenido">
+            <div class="cuerpo">
+                <p>
+                    El Tribunal de Disciplina de la ANFP sorprendió con el castigo para los azules por los incidentes en el pasado clásico ante la UC.
+                </p>
+                <p>
+                    Cuatro partidos de local a puertas cerradas y el siguiente solo con mujeres y niños en las gradas fue el castigo que determinó el Tribunal de Disciplina a la Universidad de Chile por los incidentes ocurridos en el pasado clásico ante la UC. 
+                </p>
+                <p>
+                    De este modo, los azules deberán jugar sin público en los partidos del Torneo Nacional ante Cobresal, Palestino, O'Higgins y Curicó Unido. 
+                </p>
+                <p>
+                    En tanto el quinto partido que tiene Universidad de Chile en su agenda es el Superclásico ante Colo Colo. De este modo, de mantenerse el castigo, el encuentro ante los albos por la 23° fecha se debería jugar solo con mujeres y niños que no excedan los 12 años en las gradas.
+                </p>
+                <p>
+                    <img class="img-contenido" src="{% static 'img/castigo.jpg' %}" alt="">
+                </p>
+
+            </div>
+        </section>
+     </div>
+{% endblock contenido %}
+    {% block js %}
+        
+    {% endblock js %}

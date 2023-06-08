@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static  %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/pendiente.css' %}">
+{% endblock css %}
+{% block contenido %}
+    <section id="Admin">
+        <h3> Administrador de Noticias</h3>
+        <div class="table-responsive">
+            <table class="table dark" border="4">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Foto</th>
+                        <th scope="col">publicado</th>
+                        <th scope="col">Opciones</th>
+                    </tr>            
+                    {% for item in Noticias %}
+                    <tr>
+                        <th scope="row">{{item.IDNot}}</th>
+                        <td>{{item.Titulo}}</td>
+                        <td>{{item.Fecha}}</td>
+                        <td>{{item.periodista}}</td>
+                        <td>
+                            <img src="{{item.fotos.url}}">
+                        </td>
+                        <td>{{item.Publicado}}</td>
+                        <td>
+                            <button type="submit" class="btn" value="Aprobado">Aprobado</button>
+                            <button type="reset" class="btn" value="Rechazado">Rechazado</button>
+                        </td>                        
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </section>
+
+{% endblock contenido %}
+    {% block js %}
+    
+    {% endblock js %}
