@@ -26,10 +26,17 @@
                         <td>
                             <img src="{{item.fotos.url}}">
                         </td>
-                        <td>{{item.Publicado}}</td>
                         <td>
-                            <button type="submit" class="btn" value="Aprobado">Aprobado</button>
-                            <button type="reset" class="btn" value="Rechazado">Rechazado</button>
+                            {% if item.Publicado  %}
+                                <button type="button" class="btn btn-success">Publicado</button>
+                            {% else %}
+                                <button type="button" class="btn btn-danger">No Publicado</button>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary" value="Aprobado">Aprobado</button>
+                            <button class="btn btn-dark" value="Rechazado" onclick="rechazar({{item.IDNot}})">Rechazado</button>
+                            <button class="btn btn-warning" value="Modificar" onclick="modificar({{item.IDNot}})" >Modificar</button>
                         </td>                        
                     </tr>
                 {% endfor %}
@@ -39,5 +46,6 @@
 
 {% endblock contenido %}
     {% block js %}
-    
+    <script src="{% static 'js/rechazar.js' %}"></script>
+    <script src="{% static 'js/modificar.js' %}"></script>
     {% endblock js %}

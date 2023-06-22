@@ -8,13 +8,13 @@
   <main>
     <div class="container">
 
-      <h1 class="brand"><span>Ingresar Noticia </span></h1>
+      <h1 class="brand"><span>Modificar Noticia </span></h1>
     
       <div class="wrapper">
     
         <!-- COMPANY INFORMATION -->
         <div class="company-info">
-          <h3>Ingresar datos de la Noticia</h3>
+          <h3>Modificar datos de la Noticia</h3>
           
     
           <ul>
@@ -29,32 +29,37 @@
     
         <!-- CONTACT FORM -->
         <div class="contact">
+          <h3></h3>
     
-          <form id="subir-form" action="{% url 'SUBIRNOT' %}" method="post" enctype="multipart/form-data" >
+          <form id="subir-form" action="{% url 'MODI' %}" method="post" enctype="multipart/form-data" >
             {% csrf_token %}
             <p>
               <label>Titulo</label>
-              <input type="text" name="txtTitulo" id="txtTitulo">
+              <input type="text" name="txtTitulo" id="txtTitulo" value="{{Noticias.Titulo}}">
             </p>
     
-             <p class="full">
+            <p class="full">
               <label>Descripcion</label>
-              <textarea name="txtDesc" rows="5" id="txtDesc"></textarea>
+              <textarea name="txtDesc" rows="5" id="txtDesc" value="{{Noticias.Descrip}}"></textarea>
             </p>
 
             <p>
               <label>Fecha</label>
-              <input type="date" name="txtFecha" id="txtFecha">
+              <input type="date" name="txtFecha" id="txtFecha" value="{{Noticias.Fecha}}">
             </p>
 
             <p>
-                <label >Categoria</label>
-                <select name="cboCategoria" id="cboCategoria" class="form-select">
-                  <option selected>Escoge una Categoria</option>
+              <label >Categoria</label>
+              <select name="cboCategoria" id="cboCategoria" class="form-select">
+                <option selected>Escoge una Categoria</option>
                   {% for item in Categoria %}
-                    <option value="{{item.IDCate}}">{{item.NombreCate}}</option>
+                    {% if item.NombreCate == Noticias.categoria.NombreCate %}
+                      <option selected value="{{item.IDCate}}">{{item.NombreCate}}</option>
+                    {% else %}
+                      <option  value="{{item.IDCate}}">{{item.NombreCate}}</option>
+                    {% endif %}                
                   {% endfor %}
-                </select>
+              </select>
             </p>
 
             <p>
@@ -62,12 +67,17 @@
                 <select name="cboPeriodista" id="cboPeriodista" class="form-select">
                   <option selected>seleccionar Periodistas</option>
                   {% for item in Periodistas  %}
-                   <option value="{{item.IDPer}}">{{item.NombrePer}}</option>
+                   {% if item.NombrePer == Noticias.periodista.NombrePer %}
+                    <option selected value="{{item.IDPer}}">{{item.NombrePer}}</option>
+                   {% else %}
+                    <option value="{{item.IDPer}}">{{item.NombrePer}}</option>
+                   {% endif %}
                   {% endfor %}
                 </select>
             </p>
             
-            <p>
+            <p class="full">
+              Imagen:<a href="{{Noticias.Foto.url}}">{{Noticias.Foto.url}}</a>
               <label>Adjuntar Archivo</label>
               <input type="file" name="txtIMG" id="txtIMG">
             </p>
