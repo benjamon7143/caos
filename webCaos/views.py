@@ -174,7 +174,6 @@ def realizar_modificacion(request,id):
         noti.periodista=objperio
         if imagen is not None:
             noti.Foto=imagen
-
         noti.save()
         contexto["Mensaje"]="Modifico"
     return render(request,'admin-noticias.html',contexto)
