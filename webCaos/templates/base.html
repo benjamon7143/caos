@@ -31,6 +31,8 @@
          <ul class="nav-list">
             <li class="nav-item"><a href="{% url 'IND' %}" class="nav-link">Inicio</a></li>
             <li class="nav-item"><a href="{% url 'GALE' %}" class="nav-link">Galeria</a></li>
+            <li class="nav-item"><a href="{% url 'MERCA' %}" class="nav-link">Productos</a></li>
+            <li class="nav-item"><a href="{% url 'CARRI' %}" class="nav-link">Carrito de Compras</a></li>
             <li class="nav-item"><a href="{% url 'CONTAC' %}" class="nav-link">Contactanos</a></li>
             <li class="nav-item"><a href="{% url 'NOSTRO' %}" class="nav-link">Sobre Nosotros</a></li>
             {% if user.is_authenticated %}

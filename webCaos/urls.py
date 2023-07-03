@@ -21,4 +21,8 @@ urlpatterns = [
     path('rechazar_not/<id>/',rechazar,name="RECHANOT"),
     path('modificar_not/<id>/',modificar,name="MODINOT"),
     path('modificar/',realizar_modificacion,name="MODI"),
+    path('mercancia/',mercancia,name='MERCA'),
+    path('agregst_prod/<id_producto>/',agregar_producto,name='AP'),
+    path('restar_prod/<id_producto>/',restar_producto,name='RP'),
+    path('carrito/',carrito,name='CARRI'),
 ]

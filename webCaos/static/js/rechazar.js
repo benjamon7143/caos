@@ -9,7 +9,7 @@ function rechazar(id) {
         confirmButtonText: 'Si,Rechazar'
       }).then((result) => {
         if (result.isConfirmed) {
-          location.href='rechazar_not/'+id+'/';
+          location.href='/rechazar_not/'+id+'/';
         }
       }) 
 }

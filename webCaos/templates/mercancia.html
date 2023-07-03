@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static  %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/bienvenido.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mercaderia.css' %}">   
+{% endblock css %}
+{% block contenido %}
+    <section id="bienvenido">
+        <h2>Merchandising de Caos News</h2>
+        <p>Lleva contigo a todos lados a Caos News</p>            
+    </section>
+    
+    <br>
+    <br>
+    
+    <section id="blog">
+        <div class="contenedor">
+            {% for item in Mercaderia %}
+                <ul class="cards">
+                    <li class="cards__item">
+                        <div class="card">
+                          <div class="card__image"><img src="{{item.imagen.url}}" alt=""></div>
+                          <div class="card__content">
+                            <div class="card__title">{{item.NombreMerca}}</div>
+                            <p class="card__text">{{item.descripcion}}</p>
+                            <p><a href="{% url 'AP' item.IDMerca %}">Agregar al carrito</a></p>
+                          </div>
+                        </div>
+                      </li>
+                </ul>
+            {% endfor %}
+        </div>
+    </section>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+
+
+
+
+  
+{% endblock contenido %}
+
+    {% block js %}
+    
+    {% endblock js %}
+

@@ -7,7 +7,7 @@
 {% block contenido %}
     <section id="bienvenido">
         <h2>Galeria de noticias</h2>
-        <p>Busca de acuerdo a lo que necesites por categoria o palabra</p>            
+        <p>Busca de acuerdo a lo que necesites por palabra</p>            
     </section>
 
     <section id="blog">
@@ -16,7 +16,7 @@
                 {% csrf_token %}
                 Buscar por palabra clave:
                 <input type="text" name="txtDesc" id="txtDesc">
-                <input type="submit" value="Buscar">
+                <button type="submit" class="btn" value="Buscar">Buscar</button>
             </form>
 
              <!-- <form action="{% url 'BUSCARCATE' %}" method="post">
@@ -26,15 +26,32 @@
                 <input type="submit" value="Buscar">
             </form>  -->
             
-            <div class="contenedor">
+            <br>
+            <br>
+            <div class="container">
+                <div class="gallery">
                 {% for item in Noticias %}
-                <article>
-                    <img src="{{item.Foto.url}}" alt="">
+                <div class="gallery-item">
+                    <img class="gallery-image" src="{{item.Foto.url}}" alt="">
                     <h3>{{item.Titulo}}</h3>
-                </article>
+                </div>
                 {% endfor %}
+                </div>
             </div>
     </section>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
         
 {% endblock contenido %}
  {% block js %}

@@ -52,3 +52,11 @@ class Galeria(models.Model):
     Foto=models.ImageField(upload_to='galeria',null=True)
     Noticia=models.ForeignKey(Noticia,on_delete=models.CASCADE)
 
+class Mercaderia(models.Model):
+    IDMerca=models.AutoField(primary_key=True)
+    NombreMerca=models.CharField(max_length=40)
+    CodigoBarra=models.IntegerField()
+    PrecioVenta=models.IntegerField(default=1000)
+    CantidadStock=models.IntegerField()
+    descripcion=models.CharField(max_length=300)
+    imagen=models.ImageField(default='mercaderias/default',upload_to='mercaderias',null=True)

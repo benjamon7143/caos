@@ -3,6 +3,9 @@ from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,logout,login as login_aut
 
+from .carrito import *
+
+
 # Create your views here.
 
 def index(request):
@@ -141,12 +144,14 @@ def rechazar(request,id):
     # print(usu)
     contexto={"Noticias":noticia,"Categoria":cate}
     contexto['mensaje']="rechazado"
-    return render(request,'admin-noticias.html',contexto)
-
+    #return render(request,'admin-noticias.html',contexto)
+    return redirect('/administrarnoticias/')
+    
 def modificar(request,id):
     noticia = Noticia.objects.get(IDNot=id)
     cate=Categoria.objects.all()
-    contexto={"Noticias":noticia,"Categoria":cate}
+    periodistas=Periodista.objects.all()
+    contexto={"Noticias":noticia,"Categoria":cate,"Periodistas":periodistas}
     return render(request,'modificar.html',contexto) 
 
 def realizar_modificacion(request,id):
@@ -156,6 +161,7 @@ def realizar_modificacion(request,id):
 
     noticia=Noticia.objects.all()
     periodistas=Periodista.objects.all()
+    print(periodistas)
     contexto={"Noticias":noticia,"Categoria":cate,"Periodistas":periodistas}
     if request.POST:
         titulo = request.POST.get("txtTitulo")
@@ -177,3 +183,40 @@ def realizar_modificacion(request,id):
         noti.save()
         contexto["Mensaje"]="Modifico"
     return render(request,'admin-noticias.html',contexto)
+
+###############################
+
+def mercancia(request):
+    merca=Mercaderia.objects.all()
+    contexto={"Mercaderia":merca}
+    return render(request,'mercancia.html',contexto)
+
+def agregar_producto(request,id_producto):
+    carrito= Carrito(request)
+    merca = Mercaderia.objects.get(IDMerca=id_producto)
+    carrito.agregar(merca)
+    return redirect('//')
+
+def restar_producto(request,id_producto):
+    carrito= Carrito(request)
+    merca = Mercaderia.objects.get(IDMerca=id_producto)
+    carrito.resta(merca)
+    return redirect('//')
+
+def carrito(request):
+    merca = Mercaderia.objects.all()
+    contexto={"Mercaderia":merca}
+    return render(request,'carrito.html',contexto)
+
+def cuaderno(request):
+    merca = Mercaderia.objects.all()
+    contexto={"Mercaderia":merca}
+    return render(request,'cuaderno.html',contexto)
+
+
+
+
+# alter session set "_oracle_script" = true
+# create user caos_news IDENTIFIED BY caosnews account unlock;
+# grant RESOURCE, CONNECT, dba to caos_news;
+
