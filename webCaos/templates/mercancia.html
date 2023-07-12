@@ -23,7 +23,7 @@
                           <div class="card__content">
                             <div class="card__title">{{item.NombreMerca}}</div>
                             <p class="card__text">{{item.descripcion}}</p>
-                            <p><a href="{% url 'AP' item.IDMerca %}">Agregar al carrito</a></p>
+                            <button type="submit" class="btn btn-ag"><a  class="agre" href="{% url 'AP' item.IDMerca %}">Agregar al carrito</a></button>
                           </div>
                         </div>
                       </li>

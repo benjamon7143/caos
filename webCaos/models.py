@@ -52,6 +52,9 @@ class Galeria(models.Model):
     Foto=models.ImageField(upload_to='galeria',null=True)
     Noticia=models.ForeignKey(Noticia,on_delete=models.CASCADE)
 
+    def __str__(self) -> str:
+        return super().__str__()
+
 class Mercaderia(models.Model):
     IDMerca=models.AutoField(primary_key=True)
     NombreMerca=models.CharField(max_length=40)
@@ -60,3 +63,6 @@ class Mercaderia(models.Model):
     CantidadStock=models.IntegerField()
     descripcion=models.CharField(max_length=300)
     imagen=models.ImageField(default='mercaderias/default',upload_to='mercaderias',null=True)
+
+    def __str__(self) -> str:
+        return super().__str__()

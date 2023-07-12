@@ -20,19 +20,34 @@
   
 html {
   background-color: #f0f0f0;
-} 
+}
+
+.btn{
+  width: 90%;
+  margin: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-align: center;
+  font-size: 1em;
+  font-weight: bold;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 1em;
+  cursor: pointer;
+  color: white;
+}
   
 body {
-  color: #999999;
+
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0;
-  padding: 1rem;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: "liga" on;
+  background: darkred;
 } 
   
 img {
@@ -54,14 +69,23 @@ img {
   width: 100%;
 } 
   
-/* .cards {
+.cards {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
   padding: 0;
-}  */
-  
+  justify-content: center;
+} 
+
+.btn-ag{
+  background-color: #999999;
+
+}
+.agre{
+  color: aqua;
+}
+
 .cards__item {
   display: flex;
   padding: 1rem;
@@ -111,11 +135,6 @@ img {
   transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
 } 
   
-.card__image::before {
-  content: "";
-  display: block;
-  padding-top: 56.25%;
-} 
   
 @media (min-width: 40rem) {
   .card__image::before {

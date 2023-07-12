@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,logout,login as login_aut
-
+import requests
 from .carrito import *
 
 
@@ -195,25 +195,20 @@ def agregar_producto(request,id_producto):
     carrito= Carrito(request)
     merca = Mercaderia.objects.get(IDMerca=id_producto)
     carrito.agregar(merca)
-    return redirect('//')
+    return redirect('/carrito/')
 
 def restar_producto(request,id_producto):
     carrito= Carrito(request)
     merca = Mercaderia.objects.get(IDMerca=id_producto)
     carrito.resta(merca)
-    return redirect('//')
+    return redirect('/carrito/')
 
 def carrito(request):
-    merca = Mercaderia.objects.all()
+    #merca = Mercaderia.objects.all()
+    response = requests.get("http://127.0.0.1:8000/api/mercaderia/")
+    merca = response.json() 
     contexto={"Mercaderia":merca}
     return render(request,'carrito.html',contexto)
-
-def cuaderno(request):
-    merca = Mercaderia.objects.all()
-    contexto={"Mercaderia":merca}
-    return render(request,'cuaderno.html',contexto)
-
-
 
 
 # alter session set "_oracle_script" = true
