@@ -78,13 +78,15 @@ WSGI_APPLICATION = 'ProyectoCaos.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.oracle",
-        "NAME": "xe",
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        # "ENGINE": "django.db.backends.oracle",
+        # "NAME": "xe",
         # "NAME": "orcl",
-        "USER": "caos_news",
-        "PASSWORD": "caosnews",
-        "HOST": "localhost",
-        "PORT": "1521",
+        # "USER": "caos_news",
+        # "PASSWORD": "caosnews",
+        # "HOST": "localhost",
+        # "PORT": "1521",
     }
 }
 
